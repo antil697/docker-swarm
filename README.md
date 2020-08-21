@@ -38,9 +38,9 @@ Part of the key system. Mosquitto provides the message bus for all automation ac
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/mqtt.png" />
 
 <h4>Zigbee2MQTT</h4>
-This provides the bridge of my Ikea and other Zigbee devices to the message bus for further processing and automation. It runs oof a CC2531 controller attached to Node1. I need to order a backup CC2531 but had not much luck lately as my orders got cancelled. For now, since I Docker Swarm does not support device mounts, I am stuck with this beeing at the physical node.
-However, here are some ideas to investigate:
-Zigbee2mqtt support serial over TCP protocol. That would allow me to attach a number of coordinators and route to one node at the time. 
+This provides the bridge of my Ikea and other Zigbee devices to the message bus for further processing and automation. It runs oof a CC2531 controller attached to Node1. I need to order a backup CC2531 but had not much luck lately as my orders got cancelled. For now, since I Docker Swarm does not support device mounts, I am stuck with this beeing at the physical node.<br/>
+However, here are some ideas to investigate:<br/>
+Zigbee2mqtt supports serial over TCP protocol. That would allow me to attach a number of coordinators and route to one node at the time. 
 The idea is that in case of Node1 failing Node3 will take over with a stick attached to the USB port. I need to investigate how I ensure that the controller is not active when powered by the USB port and only activates when the service is running on the node. If this cant be done by software, an possible solution is to create a small adapter that controls power via a GPIO pin on the node. Quite simple to design. 
 
 <h4>Home Assistant</h4>
