@@ -53,7 +53,7 @@ PiHole provides DHCP to my network. I could use the Unifi UGS but when it comes 
 
 <h3>NFS File Storage</h3>
 Using my Qnap to provide NFS file storage for containers. Any container moving to an other node will mount its assigned NFS volume. This allows a container such as PiHole to change a node without loosing track of who it assigned an IP address to. While there are smarter cloud storage options around, this will do for now. 
-<img src="https://github.com/antil697/docker-swarm/blob/master/Images/nfs.png" />
+<img src="https://github.com/antil697/docker-swarm/blob/master/Images/nfs.png" width=500/>
 
 <h2>System Monitoring</h2>
 <h4>Telegraf</h4>
