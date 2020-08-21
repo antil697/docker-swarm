@@ -14,6 +14,13 @@ While Docker Swarm already provides load balancing and connects to the right ser
 <h4>Traefik</h4> 
 I used NGINX for this in the past. Switching to Traefik as it is build for cloud applications. It allows me to add SSL to container HTTP traffic without the need to create a sperate certificate for each container. 
 
+<h4>Portainer</h4>
+
+<h4>Swarmpit</h4>
+
+<h4>InfluxDB</h4>
+
+<h4>Grafana</h4>
 
 <h3>Docker Swarm - Services Layer</h3>
 <h4>NodeRed</h4>
@@ -28,8 +35,10 @@ I used NGINX for this in the past. Switching to Traefik as it is build for cloud
 
 <h4>PiHole</h4>
 
-
-
+<h2>System Monitoring</h2>
+<h4>Telegraf</h4>
+Running Telegraf in each node to collect system data and report via MQTT and store in InfluxDB. While I could create a container and run it on each node, it won't be able to run [exec] plugins to collect CPU temperature.
+Telegraf will also make data available to MQTT in JSON format for futher processing in NodeRed if required. 
 
 
 # Dashboard
