@@ -28,6 +28,8 @@ I used NGINX for this in the past. Switching to Traefik as it is build for cloud
 <h4>Mosquitto</h4>
 
 <h4>Zigbee2MQTT</h4>
+This provides the bridge of my Ikea and other Zigbee devices to the message bus for further processing and automation. It runs oof a CC2531 controller attached to Node4. I need to order a backup CC2531 but had not much luck lately as my orders got cancelled. 
+The idea is that in case of Node4 failing Node2 will take over with a stick attached to the USB port. I need to investigate how I ensure that the controller is not active when powered by the USB port and only activates when the service is running on the node. If this cant be done by software, an possible solution is to create a small adapter that controls power via a GPIO pin on the node. Quite simple to design. 
 
 <h4>Home Assistant</h4>
 
