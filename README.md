@@ -29,6 +29,7 @@ I used NGINX for this in the past. Switching to Traefik as it is build for cloud
 <h4>NodeRed</h4>
 The core of my system. After starting with OpenHab and HomeAssistant, I found that the combination of NodeRed with MQTT and Zigbee2MQTT is a clear winner. HomeAssistant is only used for its floorplan addon that delivers the SVG dashboard to display on the touchscreen of Node4.
 Every logic operates within NodeRed. While my core lights are Phillips Hue based and I could in theory move Hue to Zigbee2MQTT, I have not done this so far. The logic was to keep the system independant so the basic light functions work should my Raspberry Pi fail. NodeRed would only enhance the Hue hub. But with this new HA design, I can move the devices over to my Zigbee coordinator. 
+The flow shown below conects to Kodi and checks if a movie is playing. In case that the playtime is more than 10 minutes and lights are on, the flow send instructions to the message bus to dimm lights and enable the scene defined to watch movies. 
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/nodered.png" />
 
 <h4>Mosquitto</h4>
