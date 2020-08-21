@@ -42,7 +42,7 @@ The idea is that in case of Node4 failing Node2 will take over with a stick atta
 Running Telegraf in each node to collect system data and report via MQTT and store in InfluxDB. While I could create a container and run it on each node, it won't be able to run [exec] plugins to collect CPU temperature.
 Telegraf will also make data available to MQTT in JSON format for futher processing in NodeRed if required. 
 
-<img scr="https://github.com/antil697/docker-swarm/blob/master/Images/grafana.png">
+<img scr="https://github.com/antil697/docker-swarm/blob/master/Images/grafana.png" />
 
 
 # Dashboard
