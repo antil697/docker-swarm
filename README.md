@@ -41,7 +41,7 @@ This provides the bridge of my Ikea and other Zigbee devices to the message bus 
 The idea is that in case of Node4 failing Node3 will take over with a stick attached to the USB port. I need to investigate how I ensure that the controller is not active when powered by the USB port and only activates when the service is running on the node. If this cant be done by software, an possible solution is to create a small adapter that controls power via a GPIO pin on the node. Quite simple to design. 
 
 <h4>Home Assistant</h4>
-The only function that HomeAssiant provides is the dashboard to control and monitor basic function from a central system. 
+The only function that HomeAssiant provides is the dashboard to control and monitor basic functions from a central system. 
 It uses the <a href="https://github.com/pkozul/ha-floorplan">floorplan</a> addon. Node3 is attached to a the offical Raspberry Pi touchscreen and runs in kiosk mode. It also provides services for less intensive workloads as backup.
 
 <h4>Unifi Controller</h4>
@@ -53,6 +53,7 @@ PiHole provides DHCP to my network. I could use the Unifi UGS but when it comes 
 
 <h3>NFS File Storage</h3>
 Using my Qnap to provide NFS file storage for containers. Any container moving to an other node will mount its assigned NFS volume. This allows a container such as PiHole to change a node without loosing track of who it assigned an IP address to. While there are smarter cloud storage options around, this will do for now. 
+<img src="https://github.com/antil697/docker-swarm/blob/master/Images/nfs.png" width=500/>
 
 <h2>System Monitoring</h2>
 <h4>Telegraf</h4>
