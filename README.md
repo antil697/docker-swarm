@@ -41,6 +41,9 @@ The idea is that in case of Node4 failing Node3 will take over with a stick atta
 
 <h4>PiHole</h4>
 
+<h3>NFS File Storage</h3>
+Using my Qnap to provide NFS file storage for containers. Any container moving to an other node will mount its assigned NFS volume. This allows a container such as PiHole to change a node without loosing track of who it assigned an IP address to. While there are smarter cloud storage options around, this will do for now. 
+
 <h2>System Monitoring</h2>
 <h4>Telegraf</h4>
 Running Telegraf in each node to collect system data and report via MQTT and store in InfluxDB. While I could create a container and run it on each node, it won't be able to run [exec] plugins to collect CPU temperature.
