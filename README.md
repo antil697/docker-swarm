@@ -14,7 +14,8 @@ While Docker Swarm already provides load balancing and connects to the right ser
 
 <h3>Docker Swarm - Management Layer</h3>
 <h4>Traefik</h4> 
-I used NGINX for this in the past. Switching to Traefik as it is build for cloud applications. It allows me to add SSL to container HTTP traffic without the need to create a sperate certificate for each container. 
+I used NGINX for this in the past. Switching to Traefik as it is build for cloud applications. It allows me to add SSL to container HTTP traffic without the need to create a sperate certificate for each container. In addition to securing the transmission, I can also control access for services that do not have access control from a central system. Since I am exposing some ports to the internet through my firewall, I want to secure these services.
+
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/traefik.png" />
 
 <h4>Portainer</h4>
