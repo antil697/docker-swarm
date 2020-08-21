@@ -8,4 +8,4 @@ Documenting the current design
 
 # Dashboard
 
-<img src="https://github.com/antil697/docker-swarm/blob/master/Images/dashboard.jpg" />
+<img src="https://github.com/antil697/docker-swarm/blob/master/Images/Dashboard.png" />
