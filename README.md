@@ -43,6 +43,8 @@ It uses the <a href="https://github.com/pkozul/ha-floorplan">floorplan</a> addon
 The controller for my UGS firewall.
 
 <h4>PiHole</h4>
+PiHole provides DHCP to my network. I could use the Unifi UGS but when it comes to troubleshoot issues with block lists, it is prefered that I have the query listed per client. I generally avoid going overboard with blocklists. I worked out the right balance for me. Bye bye ads and trackers. 
+<img src="https://github.com/antil697/docker-swarm/blob/master/Images/pihole.png" />
 
 <h3>NFS File Storage</h3>
 Using my Qnap to provide NFS file storage for containers. Any container moving to an other node will mount its assigned NFS volume. This allows a container such as PiHole to change a node without loosing track of who it assigned an IP address to. While there are smarter cloud storage options around, this will do for now. 
