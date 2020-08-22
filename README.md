@@ -48,7 +48,7 @@ The only function that HomeAssiant provides is the dashboard to control and moni
 It uses the <a href="https://github.com/pkozul/ha-floorplan">floorplan</a> addon. Node3 is attached to a the offical Raspberry Pi touchscreen and runs in kiosk mode. It also provides services for less intensive workloads as backup.
 
 <h4>Unifi Controller</h4>
-The controller for my UGS firewall.
+The controller for my USG firewall.
 
 <h4>PiHole</h4>
 PiHole provides DHCP to my network. I could use the Unifi UGS but when it comes to troubleshoot issues with block lists, it is prefered that I have the query listed per client. I generally avoid going overboard with blocklists. I worked out the right balance for me. Bye bye ads and trackers. 
