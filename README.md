@@ -8,6 +8,10 @@ Detailed design blueprints for each component to be completed in due time.
 # Network Diagram
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/network_diagram.png" /><br/>
 
+# Design Considerations
+Why 3 manger nodes and 1 worker?<br/>
+In order to achieve fault taulerance, I need 3 managers. The Pi3B+ is not as powerful as my 4s and is used with a touchscreen as control panel. I allow it to run some ligth loads.br/>
+Most of my services dirtibuted across the nodes do not put any strain on the system. While I have a lot of capacity left (for now), I achieved High Availability and Fault Tolerance.<br/>
 
 <h2>Management Stack</h2>
 <h3>Ingress Layer</h3>
