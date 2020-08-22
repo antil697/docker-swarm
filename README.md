@@ -32,8 +32,10 @@ Portainer is similar to Swarmpit. Some things works better with Portainer than S
 <h4>Swarmpit</h4>
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/Swarmpit.png" />
 <h4>InfluxDB</h4>
-
+Part of the swarmpit stack and also used by NodeRed and Telegraf to store metrics. 
 <h4>Grafana</h4>
+The visualisation component. Makes data come to live. When combined with Kapacitor, it allows for alerting. Since NodeRed can access the data as I am sending most of it via the mqtt message bus, I can use NodeRed to create alerts.<br/>
+<img src="https://github.com/antil697/docker-swarm/blob/master/Images/grafana.png" />
 
 <h3>Docker Swarm - Services Layer</h3>
 <h4>NodeRed</h4>
@@ -72,7 +74,7 @@ Using my Qnap to provide NFS file storage for containers. Any container moving t
 Running Telegraf in each node to collect system data and report via MQTT and store in InfluxDB. While I could create a container and run it on each node, it won't be able to run [exec] plugins to collect CPU temperature.
 Telegraf will also make data available to MQTT in JSON format for futher processing in NodeRed if required. 
 
-<img src="https://github.com/antil697/docker-swarm/blob/master/Images/grafana.png" />
+
 
 
 # Dashboard
