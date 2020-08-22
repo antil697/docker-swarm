@@ -5,6 +5,9 @@ Detailed design blueprints for each component to be completed in due time.
 # High Level Architecture
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/docker_swarm.png" />
 
+# Network Diagram
+<img src="https://github.com/antil697/docker-swarm/blob/master/Images/network_diagram.png" /><br/>
+
 
 <h2>Management Stack</h2>
 <h3>Ingress Layer</h3>
