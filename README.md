@@ -14,10 +14,16 @@ In order to achieve fault taulerance, I need 3 managers. The Pi3B+ is not as pow
 Most of my services dirtibuted across the nodes do not put any strain on the system. While I have a lot of capacity left (for now), I achieved High Availability and Fault Tolerance.<br/>
 
 <h2>Management Stack</h2>
-<h3>Ingress Layer</h3>
+<h3>Ingress Layer / Docker</h3>
 <h4>Keepalived</h4> 
 Running Keepalived as single container on each node provides the benefit of one single virtual IP for the cluster. 
 While Docker Swarm already provides load balancing and connects to the right service, the IP is independent from the node. This serves as ingress point to the cluster.
+
+<h4>Zigbee2MQTT</h4>
+This provides the bridge of my Ikea and other Zigbee devices to the message bus for further processing and automation. It runs oof a CC2531 controller attached to Node1. I need to order a backup CC2531 but had not much luck lately as my orders got cancelled. For now, since I Docker Swarm does not support device mounts, I am stuck with this beeing at the physical node. There is a workaround but I have had no time to implement it yet. For now it has to stay on the node where teh CC2531 usb stick resides.<br/>
+However, here are some ideas to investigate:<br/>
+In order to have redundant CC2531 coordinators (when only one is allowed on the network), I need to investigate how to ensure that the controller is not active when powered by the USB port and only activates when the service is running on the node. If this can't be done by software, an possible solution is to create a small adapter that controls power via a GPIO pin on the node and use NodeRed to activate the right coordinator. Quite simple to design. 
+
 
 <h3>Docker Swarm - Management Layer</h3>
 <h4>Traefik</h4> 
@@ -47,12 +53,6 @@ The flow shown below conects to Kodi and checks if a movie is playing. In case t
 <h4>Mosquitto</h4>
 Part of the key system. Mosquitto provides the message bus for all automation actions and status updates. While NodeRed is the brain, Mosquitto is the nervous systems that reports sensor states and provides commands for actions to actors. 
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/mqtt.png" />
-
-<h4>Zigbee2MQTT</h4>
-This provides the bridge of my Ikea and other Zigbee devices to the message bus for further processing and automation. It runs oof a CC2531 controller attached to Node1. I need to order a backup CC2531 but had not much luck lately as my orders got cancelled. For now, since I Docker Swarm does not support device mounts, I am stuck with this beeing at the physical node.<br/>
-However, here are some ideas to investigate:<br/>
-Zigbee2mqtt supports serial over TCP protocol. That would allow me to attach a number of coordinators and route to one node at the time. 
-The idea is that in case of Node1 failing Node3 will take over with a stick attached to the USB port. I need to investigate how I ensure that the controller is not active when powered by the USB port and only activates when the service is running on the node. If this cant be done by software, an possible solution is to create a small adapter that controls power via a GPIO pin on the node. Quite simple to design. 
 
 <h4>Home Assistant</h4>
 The only function that HomeAssiant provides is the dashboard to control and monitor basic functions from a central system. 
