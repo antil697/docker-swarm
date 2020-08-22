@@ -1,4 +1,4 @@
-# My Docker Swarm
+# Home Setup
 Documenting the current design. Work in progress!
 Detailed design blueprints for each component to be completed in due time. 
 
@@ -81,3 +81,9 @@ Telegraf will also make data available to MQTT in JSON format for futher process
 # Dashboard
 
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/Dashboard.png" />
+
+# Arduios/Tasmota
+
+A number of devices are running on ESP8622, ESP32 or variants.<br/>
+Tasmota is the prefered choice. Only a few run customised code. 
+
