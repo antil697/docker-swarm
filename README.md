@@ -26,9 +26,11 @@ I used NGINX for this in the past. Switching to Traefik as it is build for cloud
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/traefik.png" />
 
 <h4>Portainer</h4>
+Portainer is similar to Swarmpit. Some things works better with Portainer than SwarmPit so I run both.
 
+<img src="https://github.com/antil697/docker-swarm/blob/master/Images/portainer.png" />
 <h4>Swarmpit</h4>
-
+<img src="https://github.com/antil697/docker-swarm/blob/master/Images/Swarmpit.png" />
 <h4>InfluxDB</h4>
 
 <h4>Grafana</h4>
