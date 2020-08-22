@@ -22,7 +22,8 @@ While Docker Swarm already provides load balancing and connects to the right ser
 <h4>Zigbee2MQTT</h4>
 This provides the bridge of my Ikea and other Zigbee devices to the message bus for further processing and automation. It runs oof a CC2531 controller attached to Node1. I need to order a backup CC2531 but had not much luck lately as my orders got cancelled. For now, since I Docker Swarm does not support device mounts, I am stuck with this beeing at the physical node. There is a workaround but I have had no time to implement it yet. For now it has to stay on the node where teh CC2531 usb stick resides.<br/>
 However, here are some ideas to investigate:<br/>
-In order to have redundant CC2531 coordinators (when only one is allowed on the network), I need to investigate how to ensure that the controller is not active when powered by the USB port and only activates when the service is running on the node. If this can't be done by software, an possible solution is to create a small adapter that controls power via a GPIO pin on the node and use NodeRed to activate the right coordinator. Quite simple to design. 
+In order to have redundant CC2531 coordinators (when only one is allowed on the network), it seems that using <a href="https://github.com/mvp/uhubctl">uhubctl</a> would allow the control of power to USB ports. By using NodeRed to monitor the message bus where the zigbee2mqtt container is running it can turn on/off the respective USB port and activate the device. Using the ser2net - serial to network proxy in combination with traefik smart routing may allow me to connect the service on any node to any active coordinator. 
+
 
 
 <h3>Docker Swarm - Management Layer</h3>
