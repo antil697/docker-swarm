@@ -7,11 +7,12 @@ Detailed design blueprints for each component to be completed in due time.
 
 # Network Diagram
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/network_diagram.png" /><br/>
+Using MacVlan with a single IP assigned across the 3 nodes and used by PiHole, I can have the container running at any node but retain the address for my devices. Since it needs to use port 80 and 443 (which conflicts with Traefik) I decided to give it it's own address instead of using the Keepalived address of the cluster.
 
 # Design Considerations
-Why 3 manger nodes and 1 worker?<br/>
-In order to achieve fault taulerance, I need 3 managers. The Pi3B+ is not as powerful as my 4s and is used with a touchscreen as control panel. I allow it to run some ligth loads.<br/>
-Most of my services dirtibuted across the nodes do not put any strain on the system. While I have a lot of capacity left (for now), I achieved High Availability and Fault Tolerance.<br/>
+Why 3 manger nodes?<br/>
+In order to achieve fault taulerance, I need 3 managers.
+Most of my services disttibuted across the nodes do not put any strain on the system. While I have a lot of capacity left (for now), I achieved High Availability and Fault Tolerance.<br/>
 
 <h2>Management Stack</h2>
 <h3>Ingress Layer / Docker</h3>
@@ -63,7 +64,7 @@ It uses the <a href="https://github.com/pkozul/ha-floorplan">floorplan</a> addon
 The controller for my USG firewall.
 
 <h4>PiHole</h4>
-PiHole provides DHCP to my network. I could use the Unifi UGS but when it comes to troubleshoot issues with block lists, it is prefered that I have the query listed per client. I generally avoid going overboard with blocklists. I worked out the right balance for me. Bye bye ads and trackers. 
+Using PiHole to get rid of pesky trackers and ads. I generally avoid going overboard with blocklists. I worked out the right balance for me. Bye bye ads and trackers. 
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/pihole.png" />
 
 <h3>NFS File Storage</h3>
