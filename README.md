@@ -83,7 +83,7 @@ Telegraf will also make data available to MQTT in JSON format for futher process
 
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/Dashboard.png" />
 
-# Arduios/Tasmota
+# Arduinos/Tasmota
 
 A number of devices are running on ESP8622, ESP32 or variants.<br/>
 Tasmota is the prefered choice. Only a few run customised code. 
