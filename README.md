@@ -29,7 +29,8 @@ In order to have redundant CC2531 coordinators (when only one is allowed on the 
 
 <h3>Docker Swarm - Management Layer</h3>
 <h4>Traefik</h4> 
-I used NGINX for this in the past. Switching to Traefik as it is build for cloud applications. It allows me to add SSL to container HTTP traffic without the need to create a seperate certificate for each container. In addition to securing the transmission, I can also control access for services that do not have access control from a central system. Since I am exposing some ports to the internet through my firewall, I want to secure these services.
+I used NGINX for this in the past. Switching to Traefik as it is build for cloud applications but it is not for the faint hearted. It allows me to add SSL to container HTTP traffic without the need to create a seperate certificate for each container. In addition to securing the transmission, I can also control access for services that do not have access control from a central system. Since I am exposing some ports to the internet through my firewall, I want to secure these services.<br/>
+Given that this took me quite some time to get to work (compared to NGINX) I need to document this more detailed as I build this out. Anyone struggleing with this I can say only one thing, get your DNS setup right and working. 
 
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/traefik.png" />
 
