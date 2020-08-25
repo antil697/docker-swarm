@@ -7,11 +7,12 @@ Detailed design blueprints for each component to be completed in due time.
 
 # Network Diagram
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/network_diagram.png" /><br/>
+Docker Macvlan provides PiHole with a host based network where I can guarantee the IP address. I create a Macvlan exlusivly for PiHole and on any node it will retain the same IP. That ensures my network devices can always reach out to the same IP and speak to a DNS server. While Keepalived provides also a single IP, I still have to work out how to run PiHole in a container. It needs to use port 80 and 443 which also is required by Traefik. So, Macvlan is the best option to allow these two to co-exist.
 
 # Design Considerations
-Why 3 manger nodes and 1 worker?<br/>
-In order to achieve fault taulerance, I need 3 managers. The Pi3B+ is not as powerful as my 4s and is used with a touchscreen as control panel. I allow it to run some ligth loads.<br/>
-Most of my services dirtibuted across the nodes do not put any strain on the system. While I have a lot of capacity left (for now), I achieved High Availability and Fault Tolerance.<br/>
+Why 3 manger nodes?<br/>
+In order to achieve fault taulerance, I need 3 managers.
+Most of my services distributed across the nodes do not put any strain on the system. While I have a lot of capacity left (for now), I achieved High Availability and Fault Tolerance.<br/>
 
 <h2>Management Stack</h2>
 <h3>Ingress Layer / Docker</h3>
@@ -63,7 +64,7 @@ It uses the <a href="https://github.com/pkozul/ha-floorplan">floorplan</a> addon
 The controller for my USG firewall.
 
 <h4>PiHole</h4>
-PiHole provides DHCP to my network. I could use the Unifi UGS but when it comes to troubleshoot issues with block lists, it is prefered that I have the query listed per client. I generally avoid going overboard with blocklists. I worked out the right balance for me. Bye bye ads and trackers. 
+Using PiHole to get rid of pesky trackers and ads. I generally avoid going overboard with blocklists. I worked out the right balance for me. Bye bye ads and trackers. 
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/pihole.png" />
 
 <h3>NFS File Storage</h3>
@@ -82,7 +83,7 @@ Telegraf will also make data available to MQTT in JSON format for futher process
 
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/Dashboard.png" />
 
-# Arduios/Tasmota
+# Arduinos/Tasmota
 
 A number of devices are running on ESP8622, ESP32 or variants.<br/>
 Tasmota is the prefered choice. Only a few run customised code. 
