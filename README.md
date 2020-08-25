@@ -12,7 +12,7 @@ Using MacVlan with a single IP assigned across the 3 nodes and used by PiHole, I
 # Design Considerations
 Why 3 manger nodes?<br/>
 In order to achieve fault taulerance, I need 3 managers.
-Most of my services disttibuted across the nodes do not put any strain on the system. While I have a lot of capacity left (for now), I achieved High Availability and Fault Tolerance.<br/>
+Most of my services distributed across the nodes do not put any strain on the system. While I have a lot of capacity left (for now), I achieved High Availability and Fault Tolerance.<br/>
 
 <h2>Management Stack</h2>
 <h3>Ingress Layer / Docker</h3>
