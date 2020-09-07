@@ -63,7 +63,7 @@ The flow shown below connects to Kodi and checks if a movie is playing. In case 
 <h4>Mosquitto</h4>
 Part of the key system. Mosquitto provides the message bus for all automation actions and status updates. While NodeRed is the brain, Mosquitto is the nervous systems that reports sensor states and provides commands for actions to actors.<br/>
 Running an MQTT Broker on every node provides high availablility as docker swarm manages the connection. I use the KeepAliveD IP as the broker address for my IOT devices to report to. However, this creates a problem. A devices connected to the broker on Node1 may not see the messages by a devices that Docker Swarm connects to Node2. In order to overcome this, 2 MQTT Bridges are deployed. Bridges connect the brokers with each other and ensure that all see the messages. Mosquitto can be configured to use a primary and secondary bridges for this purpose. 
-<img src="https://github.com/antil697/docker-swarm/blob/master/Images/mqtt_architecture.png" />
+<img src="https://github.com/antil697/docker-swarm/blob/master/Images/mqtt.png" />
 
 <h4>Home Assistant</h4>
 The only function that HomeAssiant provides is the dashboard to control and monitor basic functions from a central system. 
