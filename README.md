@@ -63,7 +63,7 @@ The flow shown below connects to Kodi and checks if a movie is playing. In case 
 <h4>Mosquitto</h4>
 Part of the key system. Mosquitto provides the message bus for all automation actions and status updates. While NodeRed is the brain, Mosquitto is the nervous systems that reports sensor states and provides commands for actions to actors.<br/>
 Running an MQTT Broker on every node provides high availablility as docker swarm manages the connection. I use the KeepAliveD IP as the broker address for my IOT devices to report to. However, this creates a problem. A devices connected to the broker on Node1 may not see the messages by a devices that Docker Swarm connects to Node2. In order to overcome this, 2 MQTT Bridges are deployed. Bridges connect the brokers with each other and ensure that all see the messages. Mosquitto can be configured to use a primary and secondary bridges for this purpose. 
-<img src="https://github.com/antil697/docker-swarm/blob/master/Images/mqtt.png" />
+<img src="https://github.com/antil697/docker-swarm/blob/master/Images/mqtt_architecture.png" />
 
 <h4>Home Assistant</h4>
 The only function that HomeAssiant provides is the dashboard to control and monitor basic functions from a central system. 
@@ -73,7 +73,8 @@ It uses the <a href="https://github.com/pkozul/ha-floorplan">floorplan</a> addon
 The controller for my USG firewall.
 
 <h4>PiHole</h4>
-Using PiHole to get rid of pesky trackers and ads. I generally avoid going overboard with blocklists. I worked out the right balance for me. Bye bye ads and trackers. 
+Using PiHole to get rid of pesky trackers and ads. I generally avoid going overboard with blocklists. I worked out the right balance for me. Bye bye ads and trackers.<br/>
+Assigning one instance to Node1 and Node2 with a decicated IP addresses within the range reserved on each node using mcvlan network allows for a primary and secondary instance. The Unifi UGS that manages DHCP provides the addresses for these as DNS servers on the network.<br/>
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/pihole.png" />
 
 <h3>NFS File Storage</h3>
