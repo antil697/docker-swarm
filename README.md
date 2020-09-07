@@ -14,6 +14,8 @@ Why 3 manger nodes?<br/>
 In order to achieve fault taulerance, I need 3 managers.
 Most of my services distributed across the nodes do not put any strain on the system. While I have a lot of capacity left (for now), I achieved High Availability and Fault Tolerance.<br/>
 
+<h2>Cloudflare</h2>
+I am using Cloudflare as DNS solution. It allows me to protect my services, e.g. limiting access to my services only to the country I reside. My firewall only accepts incoming connections for my services from Cloudflare.<br/>
 <h2>Management Stack</h2>
 <h3>Ingress Layer / Docker</h3>
 <h4>Keepalived</h4> 
@@ -32,7 +34,12 @@ In order to have redundant CC2531 coordinators (when only one is allowed on the 
 I used NGINX for this in the past. Switching to Traefik as it is build for cloud applications but it is not for the faint hearted. It allows me to add SSL to container HTTP traffic without the need to create a seperate certificate for each container. In addition to securing the transmission, I can also control access for services that do not have access control from a central system. Since I am exposing some ports to the internet through my firewall, I want to secure these services.<br/>
 Given that this took me quite some time to get to work (compared to NGINX) I need to document this more detailed as I build this out. Anyone struggleing with this I can say only one thing, get your DNS setup right and working. 
 
-<img src="https://github.com/antil697/docker-swarm/blob/master/Images/traefik.png" />
+<img src="https://github.com/antil697/docker-swarm/blob/master/Images/traefik.png" /><br/>
+
+<h4>Authelia</h4>
+Enforcing the entry path to my services via Cloudflare -> Unifi -> KeepAliveD -> Traefik, Authelia provides 2FA authentication through Traefik using the DUO app and service. This allows me to easily login and approve the login on my Apple Watch from the DUO push notificaiton.
+
+
 
 <h4>Portainer</h4>
 Portainer is similar to Swarmpit. Some things works better with Portainer than SwarmPit so I run both.
