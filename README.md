@@ -14,7 +14,7 @@ Why 3 manger nodes?<br/>
 In order to achieve fault taulerance, I need 3 managers.
 Most of my services distributed across the nodes do not put any strain on the system. While I have a lot of capacity left (for now), I achieved High Availability and Fault Tolerance.<br/>
 At this point in time I am running 3 Nodes on Raspberry Pi 4B+ 4GB.</br>
-15 Stacks defining 26 services runing on 40 containers with each node using on average 20% CPU and less then 30% memory. 
+14 Stacks defining 27 services runing on 41 containers with each node using on average 20% CPU and less then 30% memory. 
 
 
 <h2>Cloudflare</h2>
@@ -44,6 +44,7 @@ Enforcing the entry path to my services via Cloudflare -> Unifi -> KeepAliveD ->
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/IMG_1155.PNG" width="100" /><img src="https://github.com/antil697/docker-swarm/blob/master/Images/IMG_1156.PNG" width="100" /><br/>
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/1FA.png" /><br/>
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/archi.png" /><br/>
+Authelia stack provides MariaDB as storage backend for user preferences and Redis for session peristence.
 <h4>Portainer</h4>
 Portainer is similar to Swarmpit. Some things works better with Portainer than SwarmPit so I run both.
 
