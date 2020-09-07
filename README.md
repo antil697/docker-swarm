@@ -38,8 +38,8 @@ Given that this took me quite some time to get to work (compared to NGINX) I nee
 
 <h4>Authelia</h4>
 Enforcing the entry path to my services via Cloudflare -> Unifi -> KeepAliveD -> Traefik, Authelia provides 2FA authentication through Traefik using the DUO app and service. This allows me to easily login and approve the login on my Apple Watch from the DUO push notificaiton.
-<img src="https://github.com/antil697/docker-swarm/blob/master/Images/IMG_1155.PNG" /><br/>
-<img src="https://github.com/antil697/docker-swarm/blob/master/Images/IMG_1156.PNG" /><br/>
+<img src="https://github.com/antil697/docker-swarm/blob/master/Images/IMG_1155.PNG" width="100" /><br/>
+<img src="https://github.com/antil697/docker-swarm/blob/master/Images/IMG_1156.PNG" width="100" /><br/>
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/1FA.png" /><br/>
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/archi.png" /><br/>
 <h4>Portainer</h4>
