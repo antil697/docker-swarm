@@ -1,6 +1,6 @@
 # Home Setup
-Documenting the current design. Work in progress!
-Detailed design blueprints for each component to be completed in due time. 
+Documenting the current design. Work in progress!<br/>
+Detailed design blueprints for each component to be completed in due time.
 
 # High Level Architecture
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/docker_swarm.png" />
@@ -13,6 +13,9 @@ Docker Macvlan provides PiHole with a host based network where I can guarantee t
 Why 3 manger nodes?<br/>
 In order to achieve fault taulerance, I need 3 managers.
 Most of my services distributed across the nodes do not put any strain on the system. While I have a lot of capacity left (for now), I achieved High Availability and Fault Tolerance.<br/>
+At this point in time I am running 3 Nodes on Raspberry Pi 4B+ 4GB.</br>
+15 Stacks defining 26 services runing on 40 containers with each node using on average 20% CPU and less then 30% memory. 
+
 
 <h2>Cloudflare</h2>
 I am using Cloudflare as DNS solution. It allows me to protect my services, e.g. limiting access to my services only to the country I reside. My firewall only accepts incoming connections for my services from Cloudflare.<br/>
