@@ -73,7 +73,8 @@ It uses the <a href="https://github.com/pkozul/ha-floorplan">floorplan</a> addon
 The controller for my USG firewall.
 
 <h4>PiHole</h4>
-Using PiHole to get rid of pesky trackers and ads. I generally avoid going overboard with blocklists. I worked out the right balance for me. Bye bye ads and trackers. 
+Using PiHole to get rid of pesky trackers and ads. I generally avoid going overboard with blocklists. I worked out the right balance for me. Bye bye ads and trackers.<br/>
+Assigning one instance to Node1 and Node2 with a decicated IP addresses within the range reserved on each node using mcvlan network allows for a primary and secondary instance. The Unifi UGS that manages DHCP provides the addresses for these as DNS servers on the network.<br/>
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/pihole.png" />
 
 <h3>NFS File Storage</h3>
