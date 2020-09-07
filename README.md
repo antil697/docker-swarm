@@ -97,7 +97,7 @@ Telegraf will also make data available to MQTT in JSON format for futher process
 
 
 # Dashboard
-
+A dashboard using HomeAssitant floorplan add-on. It is displayed on a Raspberry Pi 3B with a touchscreen in kiosk mode providing basic controll functionality.
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/Dashboard.png" />
 
 # Arduinos/Tasmota
