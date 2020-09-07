@@ -56,6 +56,9 @@ Part of the swarmpit stack and also used by NodeRed and Telegraf to store metric
 <h4>Grafana</h4>
 The visualisation component. Makes data come to live. When combined with Kapacitor, it allows for alerting. Since NodeRed can access the data as I am sending most of it via the mqtt message bus, I can use NodeRed to create alerts.<br/>
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/grafana.png" />
+<h4>Registry</h4>
+To ensure consitency of images and speed up deployment across nodes when new instances are forked on a a node, a local registry is provided as proxy service.<br/>
+All pulls from docker will be maintained locally and are available to each node. This also means that my own builds need to be pushed first.<br/>
 
 <h3>Docker Swarm - Services Layer</h3>
 <h4>NodeRed</h4>
