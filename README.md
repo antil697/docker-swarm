@@ -7,7 +7,7 @@ Detailed design blueprints for each component to be completed in due time.
 
 # Network Diagram
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/network_diagram.png" /><br/>
-Docker Macvlan provides PiHole with a host based network where I can guarantee the IP address. I create a Macvlan exlusivly for PiHole and on any node it will retain the same IP. That ensures my network devices can always reach out to the same IP and speak to a DNS server. While Keepalived provides also a single IP, I still have to work out how to run PiHole in a container. It needs to use port 80 and 443 which also is required by Traefik. So, Macvlan is the best option to allow these two to co-exist.
+Docker Macvlan provides PiHole with a host based network where I can guarantee the IP address. I create a Macvlan exlusivly for PiHole and on any node it will retain the same IP. That ensures my network devices can always reach out to the same IP and speak to a DNS server. While Keepalived provides also a single IP, I still have to work out how to run PiHole in a normal container. It needs to use port 80 and 443 which also is required by Traefik. So, Macvlan is the best option to allow these two to co-exist.
 
 # Design Considerations
 Why 3 manger nodes?<br/>
