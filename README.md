@@ -26,9 +26,9 @@ Running Keepalived as single container on each node provides the benefit of one 
 While Docker Swarm already provides load balancing and connects to the right service, the IP is independent from the node. This serves as ingress point to the cluster.
 
 <h4>Zigbee2MQTT</h4>
-This provides the bridge of my Ikea and other Zigbee devices to the message bus for further processing and automation. It runs oof a CC2531 controller attached to Node1. I need to order a backup CC2531 but had not much luck lately as my orders got cancelled. For now, since I Docker Swarm does not support device mounts, I am stuck with this beeing at the physical node. There is a workaround but I have had no time to implement it yet. For now it has to stay on the node where teh CC2531 usb stick resides.<br/>
+This provides the bridge of my Ikea and other Zigbee devices to the message bus for further processing and automation. It runs oof a CC2531 controller attached to Node1. I need to order a backup CC2531 but had not much luck lately as my orders got cancelled. For now, since I Docker Swarm does not support device mounts, I am stuck with this beeing at the physical node. I am running the CC2531 coordinator on a Pi Zero W and use ser2net to connect it to the container.<br/>
 However, here are some ideas to investigate:<br/>
-In order to have redundant CC2531 coordinators (when only one is allowed on the network), it seems that using <a href="https://github.com/mvp/uhubctl">uhubctl</a> would allow the control of power to USB ports. By using NodeRed to monitor the message bus where the zigbee2mqtt container is running it can turn on/off the respective USB port and activate the device. Using the ser2net - serial to network proxy in combination with traefik smart routing may allow me to connect the service on any node to any active coordinator. 
+In order to have redundant CC2531 coordinators (when only one is allowed on the network), it seems that using <a href="https://github.com/mvp/uhubctl">uhubctl</a> would allow the control of power to USB ports. By using NodeRed to monitor the message bus where the zigbee2mqtt container is running it can turn on/off the respective USB port and activate the device. I need to investigate the use of smart routing with Traefik to connect it to a specific device and build redudancy. Work in progress. 
 
 
 
@@ -84,9 +84,8 @@ Using PiHole to get rid of pesky trackers and ads. I generally avoid going overb
 Assigning one instance to Node1 and Node2 with a decicated IP addresses within the range reserved on each node using mcvlan network allows for a primary and secondary instance. The Unifi UGS that manages DHCP provides the addresses for these as DNS servers on the network.<br/>
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/pihole.png" />
 
-<h3>NFS File Storage</h3>
-Using my Qnap to provide NFS file storage for containers. Any container moving to an other node will mount its assigned NFS volume. This allows a container such as PiHole to change a node without loosing track of who it assigned an IP address to. While there are smarter cloud storage options around, this will do for now. 
-<img src="https://github.com/antil697/docker-swarm/blob/master/Images/nfs.png" width=500/>
+<h3>GlusterFS</h3>
+Moved away from mounting my Qnap as NFS share and installed GlusterFS. This gives more flexibility. Currently still monitoring the performance. <br/>
 
 <h2>System Monitoring</h2>
 <h4>Telegraf</h4>
