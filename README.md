@@ -1,18 +1,21 @@
 # Home Setup
-Documenting the current design. Work in progress!
-Detailed design blueprints for each component to be completed in due time. 
+Documenting the current design. Work in progress!<br/>
+Detailed design blueprints for each component to be completed in due time.
 
 # High Level Architecture
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/docker_swarm.png" />
 
 # Network Diagram
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/network_diagram.png" /><br/>
-Docker Macvlan provides PiHole with a host based network where I can guarantee the IP address. I create a Macvlan exlusivly for PiHole and on any node it will retain the same IP. That ensures my network devices can always reach out to the same IP and speak to a DNS server. While Keepalived provides also a single IP, I still have to work out how to run PiHole in a container. It needs to use port 80 and 443 which also is required by Traefik. So, Macvlan is the best option to allow these two to co-exist.
+Docker Macvlan provides PiHole with a host based network where I can guarantee the IP address. I create a Macvlan exlusivly for PiHole and on any node it will retain the same IP. That ensures my network devices can always reach out to the same IP and speak to a DNS server. While Keepalived provides also a single IP, I still have to work out how to run PiHole in a normal container. It needs to use port 80 and 443 which also is required by Traefik. So, Macvlan is the best option to allow these two to co-exist.
 
 # Design Considerations
 Why 3 manger nodes?<br/>
 In order to achieve fault taulerance, I need 3 managers.
 Most of my services distributed across the nodes do not put any strain on the system. While I have a lot of capacity left (for now), I achieved High Availability and Fault Tolerance.<br/>
+At this point in time I am running 3 Nodes on Raspberry Pi 4B+ 4GB.</br>
+14 Stacks defining 27 services runing on 41 containers with each node using on average 20% CPU and less then 30% memory. 
+
 
 <h2>Cloudflare</h2>
 I am using Cloudflare as DNS solution. It allows me to protect my services, e.g. limiting access to my services only to the country I reside. My firewall only accepts incoming connections for my services from Cloudflare.<br/>
@@ -41,6 +44,7 @@ Enforcing the entry path to my services via Cloudflare -> Unifi -> KeepAliveD ->
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/IMG_1155.PNG" width="100" /><img src="https://github.com/antil697/docker-swarm/blob/master/Images/IMG_1156.PNG" width="100" /><br/>
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/1FA.png" /><br/>
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/archi.png" /><br/>
+Authelia stack provides MariaDB as storage backend for user preferences and Redis for session peristence.
 <h4>Portainer</h4>
 Portainer is similar to Swarmpit. Some things works better with Portainer than SwarmPit so I run both.
 
@@ -52,6 +56,9 @@ Part of the swarmpit stack and also used by NodeRed and Telegraf to store metric
 <h4>Grafana</h4>
 The visualisation component. Makes data come to live. When combined with Kapacitor, it allows for alerting. Since NodeRed can access the data as I am sending most of it via the mqtt message bus, I can use NodeRed to create alerts.<br/>
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/grafana.png" />
+<h4>Registry</h4>
+To ensure consitency of images and speed up deployment across nodes when new instances are forked on a a node, a local registry is provided as proxy service.<br/>
+All pulls from docker will be maintained locally and are available to each node. This also means that my own builds need to be pushed first.<br/>
 
 <h3>Docker Swarm - Services Layer</h3>
 <h4>NodeRed</h4>
@@ -63,7 +70,7 @@ The flow shown below connects to Kodi and checks if a movie is playing. In case 
 <h4>Mosquitto</h4>
 Part of the key system. Mosquitto provides the message bus for all automation actions and status updates. While NodeRed is the brain, Mosquitto is the nervous systems that reports sensor states and provides commands for actions to actors.<br/>
 Running an MQTT Broker on every node provides high availablility as docker swarm manages the connection. I use the KeepAliveD IP as the broker address for my IOT devices to report to. However, this creates a problem. A devices connected to the broker on Node1 may not see the messages by a devices that Docker Swarm connects to Node2. In order to overcome this, 2 MQTT Bridges are deployed. Bridges connect the brokers with each other and ensure that all see the messages. Mosquitto can be configured to use a primary and secondary bridges for this purpose. 
-<img src="https://github.com/antil697/docker-swarm/blob/master/Images/mqtt_architecture.png" />
+<img src="https://github.com/antil697/docker-swarm/blob/master/Images/mqtt.png" />
 
 <h4>Home Assistant</h4>
 The only function that HomeAssiant provides is the dashboard to control and monitor basic functions from a central system. 
@@ -90,7 +97,7 @@ Telegraf will also make data available to MQTT in JSON format for futher process
 
 
 # Dashboard
-
+A dashboard using HomeAssitant floorplan add-on. It is displayed on a Raspberry Pi 3B with a touchscreen in kiosk mode providing basic controll functionality.
 <img src="https://github.com/antil697/docker-swarm/blob/master/Images/Dashboard.png" />
 
 # Arduinos/Tasmota
